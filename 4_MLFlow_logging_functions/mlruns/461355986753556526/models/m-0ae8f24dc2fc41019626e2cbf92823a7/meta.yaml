@@ -1,0 +1,10 @@
+artifact_location: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/461355986753556526/models/m-0ae8f24dc2fc41019626e2cbf92823a7/artifacts
+creation_timestamp: 1763688932997
+experiment_id: '461355986753556526'
+last_updated_timestamp: 1763688934238
+model_id: m-0ae8f24dc2fc41019626e2cbf92823a7
+model_type: null
+name: my_new_model_1
+source_run_id: 17787ff68f784ebe9f8b2e36e33d27b7
+status: 2
+status_message: null

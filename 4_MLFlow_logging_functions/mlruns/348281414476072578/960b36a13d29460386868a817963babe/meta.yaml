@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/348281414476072578/960b36a13d29460386868a817963babe/artifacts
+end_time: 1763691720132
+entry_point_name: ''
+experiment_id: '348281414476072578'
+lifecycle_stage: active
+run_id: 960b36a13d29460386868a817963babe
+run_name: luxuriant-colt-999
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763691718907
+status: 3
+tags: []
+user_id: chelynlee

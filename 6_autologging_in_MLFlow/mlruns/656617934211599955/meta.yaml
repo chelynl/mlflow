@@ -1,0 +1,6 @@
+artifact_location: /Users/chelynlee/Downloads/MLFlow_Udemy/6_autologging_in_MLFlow/mlruns/656617934211599955
+creation_time: 1763757308385
+experiment_id: '656617934211599955'
+last_update_time: 1763757308385
+lifecycle_stage: active
+name: experiment_autolog

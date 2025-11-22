@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/Downloads/MLFlow_Udemy/5_launch_multiple_experiments_and_runs/mlruns/769045630744704932/4948951d2056474fb922364c27ed6457/artifacts
+end_time: 1763754640257
+entry_point_name: ''
+experiment_id: '769045630744704932'
+lifecycle_stage: active
+run_id: 4948951d2056474fb922364c27ed6457
+run_name: run3.1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763754639118
+status: 3
+tags: []
+user_id: chelynlee

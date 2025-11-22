@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/675994347418202935/a4bf793ffbdc4970a9f7eb792f7e37ce/artifacts
+end_time: 1763692942874
+entry_point_name: ''
+experiment_id: '675994347418202935'
+lifecycle_stage: active
+run_id: a4bf793ffbdc4970a9f7eb792f7e37ce
+run_name: silent-grouse-781
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763692941598
+status: 3
+tags: []
+user_id: chelynlee

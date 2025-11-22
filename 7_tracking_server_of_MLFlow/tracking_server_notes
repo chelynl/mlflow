@@ -1,0 +1,116 @@
+Up until now, we were logging entities in our local system which can be accessible to few users or a single user (not ideal for production, not scalable). There should be a dedicated server to store all tracking entities, which is scalable and can handle enterprise level requests.
+
+MLflow tracking server = centralized repository that stores metadata and artifacts generated during the training of machine learning models
+- consists of two components: Storage and Networking
+- can authenticate and access artifact data from a centralized location regardless of where the data is physically stored
+
+- Storage: stores the artifacts, metadata, generated during the training process (i.e. model checkpoints, trained models, experiment/run details, etc.)
+    - Backend Store: store metadata (i.e. experiment name, id, run name, run id, parameters, metrics, tags, etc.)
+        - DB Store:
+            - Default: SQLite (not suitable for production)
+            - Production: MySQL, PostgreSQL, etc.
+        - File Store:
+            - Default: Local file system (not suitable for production)
+            - Production: Cloud storage solutions like AWS S3, Azure Blob Storage, Google Cloud Storage, etc.
+    - Artifact Store: store artifacts (i.e. trained models, input data, output files, or visuals)
+
+- Networking: allows users to interact with the tracking server using a REST API or RPC calls
+    - Rest API: access tracking server over HTTP
+    - RPC: access tracking server over gRPC (high performance, open source framework to provide bidirectional/faster communication between client and server)
+    - Also offers proxy access to artifact storage such as Amazon S3, Azure Blob Storage, Google Cloud Storage, etc.
+    - Extra security: you can create a separate instance of MLflow tracking server to exclusively handle sensitive artifact storage/retrieval, which can then be connected to the main tracking server using proxy access
+
+Finally, when the tracking server is set up, you can log the experiment data and store artifacts by sending data to the server from a client application. The tracking server provides APIs and SDKs for different programming languages and ML libraries. This allows us to log experiment data, query runs, and experiment while managing experiment metadata from the supported application.
+Since tracking server is centralized, you can compare results across experiments, track model performance over time, and collarborate with team members.
+
+Terminal Command: 
+You have to tell mlflow what is the backend store uri for persisting experiment and run data. Data will be logged to the mlruns directory by default. Then specify artifacts uri where artifacts for any new experiments will be stored. Then, specify the host on which the server will run and the port number to listen for incoming requests.
+
+mlflow server \
+    --backend-store-uri <backend_store_uri> \
+    --default-artifact-root <artifact_store_uri> \
+    --host <host_address> \
+    --port <port_number>
+
+# Example: 
+1. Go to directory with mlflow folder 
+2. Run command below to start tracking server with sqlite as backend store and local directory as artifact store (scenario #3 mentioned below):
+mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
+
+Mlflow client can interface with a variety of backend and artifact storage configurations.
+
+Tracking Server Configurations:
+
+Local configurations:
+1. MLflow on localhost
+    - run mlflow on your local machine
+    - both the backend and artifact stores can share a common directory on the local filesystem (mlruns dir)
+    - all artifacts, metrics, hyperparameters, tags are stored as files in the local filesystem of your machine
+    - automatically setup when you install mlflow using pip install on local system
+2. MLflow on localhost with SQLite
+    - use sqlite on local machine as the backend store for tracking mlflow runs
+    - all metadata for your runs (i.e. experiment name, id, run name, run id, parameters, metrics, tags, etc.) are stored in a sqlite database file on your local machine
+    - artifacts are still stored in a local file system ('mlruns/') on your machine
+    - need to set tracking uri like this: mlflow.set_tracking_uri("sqlite:///mlflow.db"), which creates an instance of sqlite db locally
+3. MLflow on localhost with Separate Dedicated Tracking Server
+    - simliar to scenario 1 but instead of using the same shared space, a dedicated server is launched instead which listens for REST request calls at the default port 5000
+    - all experiment and runs metadata are stored through this tracking server
+    - tracking server is still hosted on your localhost only but got separate dedicated unit to store tracking data
+    - tracking server can be a file store or database (default is local file store)
+    - artifacts are still stored in local storage
+
+Scenario 3 broken down:
+1. MLflow client creates an instance of a REST store and sends a REST API request to log mlflow entities
+2. The tracking server then creates an instance of file store or sqlite if explicitly mentioned to save mlflow entities and writes directly to the local mlruns directory or the database
+3. To store artifacts, mlflow client starts with a REST request and uses the REST store instance and sends the REST request to fetch the artifacts uri location
+4. The tracking server then responds with an artifact store location (local file store in this case)
+5. MLflow client creates an instance of local artifact repository and saves artifacts to the local file system as specified by the artifact store uri (just a subdir of mlruns/)
+
+In the real world, the tracking server and the storage are hosted on a remote server (cloud or on-premise) so that multiple users can access the tracking server from their local machines and log experiment/run data to a centralized location.
+
+Remote configurations:
+
+4. MLflow with remote tracking server and storage
+    - Mlflow supports distributed architectures where the tracking server, backend store, and artifact store can be hosted on separate remote servers or cloud services. 
+    - They are usually hosted on cloud services like AWS, Azure, GCP, etc. An example scenario is a remote tracking server, remote postgres db (remote host) for the backend entity storage, and an S3 bucket for the artifact storage.
+    - At first mlfow client creates an instance of a REST store and sends REST API requests to remote host to log mlflow entities.
+    - The tracking server then creates an instance of SQL alchemy store and connects to the remote host (postgresSQL) to insert mlflow entities into the remote db.
+    - For artifact storing, mlflow client uses REST store to send a REST request to fetch the artifact stores location from the tracking server. The tracking server responds with the artifact storage uri location or S3 bucket location.
+    - MLflow client creates an instance of S3 artifact repository and connects to the remote host using boto client libraries and uploads artifacts to the S3 bucket.
+    - Both the backend store and artifact store are remotely located and they interact with the client using REST API calls.
+    - Backend store uri is set to PostgreSQL with user credentials and default artifact root is to store artifacts set to S3 bucket and the host with tracking server is hosted.
+
+5. Mlflow remote tracking server with proxied artifact storage access
+    - MLflow tracking server supports utilizing the host as a proxy server for operations involving artifacts.
+    - MLflow server can be configured with an artifacts http proxy, passing artifact request through the tracking server to store and retrieve artifacts without having to interact with the underlying object store service.
+    - In this scenario, you use a tracking server and backend store both remote but you have restricted network access to the backend store. 
+    - To access the backend store, you use a proxy server that has access to the backend store. The proxy server is configured to route requests to the backend store through the tracking server. 
+    - MLflow tracking server supports utilizing the host as a proxy server for operations that involves artifacts.
+    - Once configured, an admin can start the tracking server to enable assumed role operations involving the saving, loading, or listing of model artifacts, images, documents, and files. 
+    - This eliminates the need to allow any users to have direct access to a remote object store like S3 bucket for artifact handling and thus eliminates the need for an end user to provide access credentials to interact with the underlying object store. 
+    - This can mean that when you have an organization with critical data, instead of assigning a person to have direct path access to a remote object, use this proxied access technique.
+
+Deep dive in sceario 5:
+1. For storing the runs and experiments metadata, MLflow client would first create an instance of REST store and sends REST API requests to log MLflow entities.
+2. The tracking server then creates an instance of SQL alchemy store and connects to the remote host for inserting information such as metrics, parameters, tags in the database.
+3. Then the retrieval requests by the client return information from the configured SQL alchemy store table.
+4. For the logging and retrieval of artifacts from Artifact Store, the MLflow client makes the logging events using http artifact repository to write files to the MLflow tracking server.
+5. The tracking server then write these files to the configured object store location with assumed role authentication.
+6. Now for retrieving these artifacts, note that retrieving artifacts from the configured backend store for a user request is done with the same authorized authentication that was configured at server start.
+7. Lastly, as part of retrieving the artifacts, artifacts are passed to the end user through tracking server through the interface http artifact repository.
+
+Since artifacts are accessed via proxy server, this would mean that this MLflow artifact proxy access service enables users to have an assumed role of access to all the artifacts that are accessible to the tracking server. Therefore, administrators who are enabling this feature should ensure that the access level which is granted to the tracking server for artifact operations meets all the security requirements. This scenario is useful when you have restricted network access to the backend store but you still need to store artifacts generated during experiments.
+
+6. MLflow tracking server used as a proxied access host for artifact storage access
+    - Use the mlflow tracking server exclusively as a proxy server to access a remote backend store. 
+    - You are essentially restricting an mlflow server instance to only serve artifact related API requests by proxying to an underlying object store.
+    - Starting a tracking server using this scenario will disable all tracking server functionality, apart from API calls related to saving, loading, or listing of artifacts. However, creating runs, logging metrics or parameters and accessing other attributes about experiments are not permitted in this mode. 
+    - Basically, there will be just artifacts and no metadata about runs and experiments.
+
+Deeper dive in scenario 6:
+1. MLflow client interacts with the tracking server using http artifact repository.
+2. Then, tracking server will write this listed artifact files to the file store.
+3. The tracking server is passing response of the listing of the artifacts from file store to the client.
+4. Finally, loading the artifacts will utilize the access credentials of the MLflow tracking server to acquire the files, which are then passed to the client.
+
+We are using artifacts only flag in the command that restricts MLflow server instance to only serve artifact related API requests by proxying to an underlying object store.

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/954730180113409029/3f4a1dbe56a544a3b85c478c7eba31e3/artifacts
+end_time: 1763607758011
+entry_point_name: ''
+experiment_id: '954730180113409029'
+lifecycle_stage: active
+run_id: 3f4a1dbe56a544a3b85c478c7eba31e3
+run_name: bald-lark-351
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763607756780
+status: 3
+tags: []
+user_id: chelynlee

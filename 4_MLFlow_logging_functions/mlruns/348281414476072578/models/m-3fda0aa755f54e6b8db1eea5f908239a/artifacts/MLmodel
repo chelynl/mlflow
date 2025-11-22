@@ -1,0 +1,22 @@
+artifact_path: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/348281414476072578/models/m-3fda0aa755f54e6b8db1eea5f908239a/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.6.0
+model_id: m-3fda0aa755f54e6b8db1eea5f908239a
+model_size_bytes: 928
+model_uuid: m-3fda0aa755f54e6b8db1eea5f908239a
+prompts: null
+run_id: 07b0cea57e0f4e8a906f8bd740f721b1
+utc_time_created: '2025-11-21 01:53:05.422155'

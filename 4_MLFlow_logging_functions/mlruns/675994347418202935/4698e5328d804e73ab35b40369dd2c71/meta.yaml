@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/675994347418202935/4698e5328d804e73ab35b40369dd2c71/artifacts
+end_time: 1763693275764
+entry_point_name: ''
+experiment_id: '675994347418202935'
+lifecycle_stage: active
+run_id: 4698e5328d804e73ab35b40369dd2c71
+run_name: beautiful-whale-903
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763693274477
+status: 3
+tags: []
+user_id: chelynlee

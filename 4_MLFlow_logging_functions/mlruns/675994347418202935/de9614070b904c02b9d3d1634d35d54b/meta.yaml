@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/675994347418202935/de9614070b904c02b9d3d1634d35d54b/artifacts
+end_time: 1763694383663
+entry_point_name: ''
+experiment_id: '675994347418202935'
+lifecycle_stage: active
+run_id: de9614070b904c02b9d3d1634d35d54b
+run_name: flawless-fowl-431
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763694382387
+status: 3
+tags: []
+user_id: chelynlee

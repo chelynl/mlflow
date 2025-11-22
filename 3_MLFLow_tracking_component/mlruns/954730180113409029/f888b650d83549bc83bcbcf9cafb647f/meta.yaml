@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/954730180113409029/f888b650d83549bc83bcbcf9cafb647f/artifacts
+end_time: 1763607204091
+entry_point_name: ''
+experiment_id: '954730180113409029'
+lifecycle_stage: active
+run_id: f888b650d83549bc83bcbcf9cafb647f
+run_name: nosy-conch-832
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763607202853
+status: 3
+tags: []
+user_id: chelynlee

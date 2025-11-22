@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/675994347418202935/63707f04786a46a6aebc6227e7fa06ed/artifacts
+end_time: 1763694164186
+entry_point_name: ''
+experiment_id: '675994347418202935'
+lifecycle_stage: active
+run_id: 63707f04786a46a6aebc6227e7fa06ed
+run_name: welcoming-pug-22
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763694162900
+status: 3
+tags: []
+user_id: chelynlee

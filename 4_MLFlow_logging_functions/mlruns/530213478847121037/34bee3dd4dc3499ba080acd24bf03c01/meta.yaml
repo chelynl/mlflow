@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/530213478847121037/34bee3dd4dc3499ba080acd24bf03c01/artifacts
+end_time: 1763691773911
+entry_point_name: ''
+experiment_id: '530213478847121037'
+lifecycle_stage: active
+run_id: 34bee3dd4dc3499ba080acd24bf03c01
+run_name: polite-cub-194
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763691772672
+status: 3
+tags: []
+user_id: chelynlee

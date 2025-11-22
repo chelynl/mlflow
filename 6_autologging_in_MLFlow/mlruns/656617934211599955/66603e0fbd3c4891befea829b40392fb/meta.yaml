@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/Downloads/MLFlow_Udemy/6_autologging_in_MLFlow/mlruns/656617934211599955/66603e0fbd3c4891befea829b40392fb/artifacts
+end_time: 1763758308943
+entry_point_name: ''
+experiment_id: '656617934211599955'
+lifecycle_stage: active
+run_id: 66603e0fbd3c4891befea829b40392fb
+run_name: stately-conch-190
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763758307409
+status: 3
+tags: []
+user_id: chelynlee

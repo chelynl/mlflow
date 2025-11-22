@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/954730180113409029/eaeae58a14ae4e15af1de5d516b99453/artifacts
+end_time: 1763607181394
+entry_point_name: ''
+experiment_id: '954730180113409029'
+lifecycle_stage: active
+run_id: eaeae58a14ae4e15af1de5d516b99453
+run_name: receptive-ray-849
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763607180129
+status: 3
+tags: []
+user_id: chelynlee

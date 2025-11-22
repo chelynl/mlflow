@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/348281414476072578/5adc6b42758949ce93ae0f54fcf1f42a/artifacts
+end_time: 1763690132188
+entry_point_name: ''
+experiment_id: '348281414476072578'
+lifecycle_stage: active
+run_id: 5adc6b42758949ce93ae0f54fcf1f42a
+run_name: resilient-mouse-629
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763690130962
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/348281414476072578/eaaf03033f9848ed92576b8d89b9b981/artifacts
+end_time: 1763690100439
+entry_point_name: ''
+experiment_id: '348281414476072578'
+lifecycle_stage: active
+run_id: eaaf03033f9848ed92576b8d89b9b981
+run_name: sedate-stag-996
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763690099207
+status: 3
+tags: []
+user_id: chelynlee

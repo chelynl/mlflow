@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/954730180113409029/f1c90b02492f45df8f473cd4ac283880/artifacts
+end_time: 1763607229318
+entry_point_name: ''
+experiment_id: '954730180113409029'
+lifecycle_stage: active
+run_id: f1c90b02492f45df8f473cd4ac283880
+run_name: burly-duck-760
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763607228056
+status: 3
+tags: []
+user_id: chelynlee

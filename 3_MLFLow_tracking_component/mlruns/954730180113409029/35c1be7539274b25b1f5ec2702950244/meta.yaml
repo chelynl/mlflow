@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/954730180113409029/35c1be7539274b25b1f5ec2702950244/artifacts
+end_time: 1763607774333
+entry_point_name: ''
+experiment_id: '954730180113409029'
+lifecycle_stage: active
+run_id: 35c1be7539274b25b1f5ec2702950244
+run_name: nebulous-bug-793
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763607773088
+status: 3
+tags: []
+user_id: chelynlee

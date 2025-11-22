@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/348281414476072578/41a714ac5e824a57babd3672abc63a7b/artifacts
+end_time: 1763690055580
+entry_point_name: ''
+experiment_id: '348281414476072578'
+lifecycle_stage: active
+run_id: 41a714ac5e824a57babd3672abc63a7b
+run_name: rogue-robin-310
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763690054360
+status: 3
+tags: []
+user_id: chelynlee

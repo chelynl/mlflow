@@ -1,0 +1,36 @@
+MLflow model = standard format to package ML models in a reusable format allowing models to be easily deployed in various environments (prod server, cloud, docker or kubernetes)
+
+Conventional way to deploy models is to manually package the model including all dependencies and then deploy it to the prod env. --> VERY MANUAL, PRONE TO ERRORS, lack of reproducibility/transparency
+
+MLflow models address this issue by providing:
+- standard format for packaging ML models
+- central repository for managing models
+- API for deploying models to various environments
+
+Reproducibility: mlflow models component packages the model in a standard format along with its dependencies, ensuring that the exact env used to train the model is reproducible.
+Collaboration: user-friendly UI that allows users to track model versions, share models, and promote models to production
+Flexibility: mlflow model serving component supports deploying models to real-time inference, batch inference, or edge deployment
+
+MLflow model component consists of 3 things: storage format, model signature, model API
+- Storage format: specifies how the model is packaged and saved 
+    - includes model, metadata of model, hyperparams, model version
+    - supports multiple storage formats including dir of files, single file format, python functions or container images (docker is industry standard)
+- Model signature: specifies the input/output data types and shapes that the model expects and returns
+    - inputs/outputs can be simple data types (int, str) or complex (np arrays, py lists)
+    - used by mlflow to generate REST API for the model (then used for inference)
+    - defined by the python function annotations syntax
+    - stored as part of the mlflow model and can be accessed by other mlflow components
+    - mlflow.autolog() logs model signature by default; you need to explicitly log model signature for 
+- Model API: standardized interface for interacting with the model
+    - We can generate the API easily using flask, FastAPI, etc. 
+    - Model API supports both synchronous/asynchronous requests and can be used for real-time inference or batch processing
+    - API can be deployed to various env (cloud, edge devices, on-prem, etc.)
+
+What is model flavor?
+Flavor = specific way of serializing and storing a ML model
+- Each of the supported frameworks and libraries has an associated flavor in MLflow
+- Community-driven flavors and custom flavors
+
+MLflow also provides functionality for evaluating the models using metrics (accuracy, f1-score, precision, recall). 
+It provides tools to deploy mlflow models to various platforms such as docker container, REST API, TF serving, and AWS Sagemaker.
+If you have an on-prem data center or another server, you can set a custom deployment target (server) along with the necessary code.

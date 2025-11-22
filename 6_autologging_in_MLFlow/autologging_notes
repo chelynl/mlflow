@@ -1,0 +1,21 @@
+Previously, we did manually logging using corresponding log functions (log_params, log_metrics, log_artifacts, etc.). 
+
+Autologging is a feature that allows automatic logging of certain parameters, metrics, artifacts, etc. without the need for explicit code instrumentation.
+- automatically captures information from the runtime environment and the code itself
+- two ways to do this: generic autolog method or library-specific autolog methods
+- useful for when you are using a standard model but explicit logging would be needed for custom models 
+
+## Generic Autologging
+mlflow.autolog()
+- enable autologging for each supported library that is installed or used in the code
+- params: log_models, log_input_examples, log_model_signatures, disable
+
+## Library-Specific Autologging
+- mlflow.<lib>.autolog()
+- mlflow.sklearn.autolog()
+- mlflow.tensorflow.autolog()
+- mlflow.pytorch.autolog()
+- use library-specific autologging functions
+- params: log_models, log_input_examples, log_model_signatures, disable
+
+MLflow autolog calls the logs for all supported libraries in the environement whereas library-specific autolog calls the logs for only that specific library.

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/Downloads/MLFlow_Udemy/4_MLFlow_logging_functions/mlruns/348281414476072578/3ca4b1940e8d4c00ae944f19944771eb/artifacts
+end_time: 1763689930368
+entry_point_name: ''
+experiment_id: '348281414476072578'
+lifecycle_stage: active
+run_id: 3ca4b1940e8d4c00ae944f19944771eb
+run_name: upset-ant-226
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763689929137
+status: 3
+tags: []
+user_id: chelynlee

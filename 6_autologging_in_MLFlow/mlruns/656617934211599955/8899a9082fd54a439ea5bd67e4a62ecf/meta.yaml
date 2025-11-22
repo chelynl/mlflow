@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/Downloads/MLFlow_Udemy/6_autologging_in_MLFlow/mlruns/656617934211599955/8899a9082fd54a439ea5bd67e4a62ecf/artifacts
+end_time: 1763757316041
+entry_point_name: ''
+experiment_id: '656617934211599955'
+lifecycle_stage: active
+run_id: 8899a9082fd54a439ea5bd67e4a62ecf
+run_name: orderly-bear-371
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763757308431
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,109 @@
+MLflow logging functions
+
+- set_tracking_uri() = set the default tracking URI for current run in MLflow (where to log experiments/runs and store artifacts)
+  - defines where to create the mlruns/ folder (default is current working directory)
+  - can be local file system, remote server, or databricks workspace
+  - you can define the folder name as well ('mlruns' is default) using "./<name>"
+  - for remote path use http://<ip_address>:<port>
+  - for databricks workspace, use workspace "databricks://<profile_name>"
+
+- get_tracking_uri() = get the current tracking URI (get location path) set earlier
+  - takes no parameters and only outputs tracking URI
+
+- create_experiment() = create a new experiment in MLflow tracking server
+  - params = name, artifact_location (optional; default is tracking URI location), tags (optional)
+  - specify custom name of your experiment
+  - specify path for artifacts only if you want to store them separate from other params/metrics/etc.
+  - tags can be key-value pairs to add metadata to experiment (helpful for grouping/filtering experiments)
+  - takes experiment name as parameter
+  - returns experiment ID, which can get passed to mlflow.start_run() to associate runs with this experiment
+
+- set_experiment() = set the active (already existing) experiment for current run
+  - takes experiment name and experiment_id as parameters
+  - if experiment does not exist, it creates a new experiment with given name
+  - utilize an existing experiment to record runs
+  - returns Experiment object with experiment ID, name, artifact location, and lifecycle stage
+  - output is an instance of mlflow.entities.Experiment (new active experiment)
+
+
+  Functions to handle runs:
+
+  - mlflow.start_run()
+    - starts a new MLflow experiment under which all the entities will be logged
+    - specify the run_id arugment when you want to utilize the existing run
+    - specify the experiment_id under which the current run must be created (can only use when run_id is not specified)
+    - specify run_name that specifies name of the new run (can only use when run_id is not specified)
+    - nested=True to set any run as nested run
+    - tags = dictionary of key-value pairs to set tags to the new/existing run
+    - description = populates desc box of the new/existing run
+    - returns mlflow.ActiveRun object that acts as a context manager wrapping the run's state
+    - if you use 'with' statement, the run is automatically ended at the end of the block
+
+  - mlflow.end_run()
+    - ends the current active MLflow run
+    - status parameter = "FINISHED" (default), "FAILED", or "KILLED"
+    - use if you did not use 'with' statement with mlflow.start_run()
+
+
+  - mlflow.active_run()
+    - returns run which is currently active now
+    - no parameters, returns mlflow.ActiveRun object if there is an active run, else returns None
+
+  - mlflow.last_active_run()
+    - gets the most recent active run
+    - no parameters, returns mlflow.ActiveRun object if there is an active run, else returns None
+
+
+  There is an order of preedence with which the experiment name is searched and assigned to this parameter:
+  1. Experiment name mentioned in mlflow.set_experiment() or mlflow.create_experiment()
+  2. If set experiment is not used, then it will search the environment variable MLFLOW_EXPERIMENT_NAME
+  3. If the previous variable is not set, then it will search for MLFLOW_EXPERIMENT_ID environment variable
+  4. If none of the above are set, then it will create a default experiment defined by the tracking server
+
+  Core logging functions:
+
+  - mlflow.log_param(): logs a single hyperparameter (key-value pair) for the current active run
+    - key: name of the parameter
+    - value: value of the parameter which the model is trained
+    - returns logged parameter value
+
+  - mlflow.log_params(): logs multiple hyperparameters (dictionary of key-value pairs) for the current active run
+    - params: dictionary of key-value pairs including parameter names and their values
+    - returns None (simply logs the parameters)
+
+  - mlflow.log_metric(): logs a single metric (key-value pair) for the current active run
+    - key: name of the metric
+    - value: value of the metric (float)
+    - step: optional integer representing the step at which the metric is logged (default is 0)
+    - returns None
+
+  - mlflow.log_metrics(): logs multiple metrics (dictionary of key-value pairs) for the current active run
+    - metrics: dictionary of key-value pairs including metric names and their values (float)
+    - step: optional integer representing the step at which the metrics are logged (default is 0)
+    - returns None
+
+  - mlflow.log_artifact(): logs a single artifact (output model, training set, test set, etc.)
+    - local_path: path to the local file to be logged (stored) as an artifact
+    - artifact_path: optional path within the run's artifact directory to store the artifact
+    - returns None
+
+  - mlflow.log_artifacts(): logs multiple artifacts (a directory of files)
+    - local_dir: path to the local directory containing files to be logged as artifacts
+    - artifact_path: optional path within the run's artifact directory to store the artifacts
+    - returns None
+
+  - mlflow.get_artifact_uri(): gets the URI of the artifact location for the current active run
+    - artifact_path: optional run-relative path for which absolute URI is to be obtained (i.e. "path/to/artifact"). If unspecified, returns root artifact URI for the run
+    - returns string representing the absolute URI of the artifact location or currently active run's artifact root
+
+  
+  Tags are labels (key-value pairs) that can be associated with experiments and runs to add metadata for better organization and filtering. There are default system tags that get created and you can make custom tags. You specify tags during the run, which means they are between mlflow.start_run() and mlflow.end_run().
+
+  - mlflow.set_tag(): sets a single tag (key-value pair) for the current active run
+    - key: name of the tag
+    - value: value of the tag
+    - returns None (simply sets the tag to the run)
+
+  - mlflow.set_tags(): sets multiple tags (dictionary of key-value pairs) for the current active run
+    - tags: dictionary of key-value pairs including tag names and their values
+    - returns None (simply sets the tags to the run)
