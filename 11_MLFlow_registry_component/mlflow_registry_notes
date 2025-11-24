@@ -1,0 +1,29 @@
+Now that we're done with experiments and have created models and logged them with one of the flavors along with the model, metadata, hyperparams, etc. are logged.
+You have evaluated all the models created from different runs and found the best model and it is packaged.
+Next step is to register the model in a centralized repository for 
+
+Model Registry Component = centralized model store, set of APIs, and UI, to collaboratively manage the full lifecycle of an MLflow model
+- Centralized Model Registry: provides a centralized repository for storing and organizing your models, artifacts, metadata, training code, data
+- Model Versioning: each time you create a new model, you can register it in the Model Registry as a new version
+- Deployment Workflow: manage different stages like development, staging, and production to ensure that only well-tested models go live
+- Transition to Production: transition a model from a staging environment to a production environment with clear approval processes and auditing
+- Model Lineage and Audit Trails: keeps track of the entire lineage of each model version
+
+You can register models in 2 ways: UI or APIs
+
+Prerequisites for UI Method:
+- Database backend store is required to use model registry for uploading the metadata of the model (i.e. model name, location, inputs, outputs, etc.)
+    - FYI: the model itself is not uploaded to the registry, it just stays in its default location
+- Models should be already logged using using the log_model methods of the corresponding model flavor
+
+1. Start mlflow tracking server: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
+2. Run code in which the tracking uri is set to the tracking server uri
+3. Go to the UI and select the run (model) to register
+4. Click 'register' with a model name and decide to update an existing model version or create new model
+5. Model has been uploaded to the registry.
+6. To open the model registry store, go to the 'Models' tab from the sidebar on the UI
+7. You can add a description and tags to your model (helpful in identifying and organizing)
+
+Use custom 'ALIASES' to denote phase of a model version (i.e. staging, prod, etc.)
+- Assign custom name references to aliases for any model version
+

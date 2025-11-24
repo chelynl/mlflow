@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/c1915dd74211415a99c22051ed0f6467/artifacts
+end_time: 1763940321467
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: c1915dd74211415a99c22051ed0f6467
+run_name: stately-shrike-217
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763940319794
+status: 3
+tags: []
+user_id: chelynlee

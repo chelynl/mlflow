@@ -10,8 +10,13 @@ import mlflow
 import mlflow.sklearn
 from pathlib import Path
 import os
+# Now, we will infer the model signature and input example using mlflow
 from mlflow.models.signature import ModelSignature, infer_signature
 from mlflow.types.schema import Schema,ColSpec
+
+'''
+The purpose of this script is to create a model signature for the wine quality prediction model AUTOMATICALLY using mlflow.
+'''
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
@@ -29,13 +34,21 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(40)
 
-    # Read the wine-quality csv file from the URL
-    data = pd.read_csv("red-wine-quality.csv")
+    try:
+        data = pd.read_csv("red-wine-quality.csv", index_col=0)
+    except Exception:
+        # Fallback if index_col=0 causes issues (e.g. if the file doesn't have that structure), though based on head output it does.
+        data = pd.read_csv("red-wine-quality.csv")
+        if "Unnamed: 0" in data.columns:
+            data = data.drop("Unnamed: 0", axis=1)
+
     #os.mkdir("data/")
     data.to_csv("data/red-wine-quality.csv", index=False)
     # Split the data into training and test sets. (0.75, 0.25) split.
@@ -51,7 +64,7 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="/Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns")
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
     exp = mlflow.set_experiment(experiment_name="experiment_signature")
@@ -90,13 +103,17 @@ if __name__ == "__main__":
     print("  MAE: %s" % mae)
     print("  R2: %s" % r2)
 
+    # Infer the signature and input example using the test data and predicted values (output example is optional)
     signature = infer_signature(test_x, predicted_qualities)
     input_example = {
         "columns":np.array(test_x.columns),
         "data": np.array(test_x.values)
     }
     mlflow.log_artifact("red-wine-quality.csv")
-    mlflow.sklearn.log_model(lr, "model", signature=signature, input_example=input_example)
+
+    # Log the model with signature and input example
+    mlflow.sklearn.log_model(lr, name="model", signature=signature, input_example=input_example)
+
     artifacts_uri=mlflow.get_artifact_uri()
     print("The artifact path is",artifacts_uri )
     mlflow.end_run()

@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/de537431eebd4d90a68edfb1d32b0a6f/artifacts
+end_time: 1763939272101
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: de537431eebd4d90a68edfb1d32b0a6f
+run_name: rare-elk-386
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763939269656
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/ef1cad83c93a4ce2be5b9403cf8af929/artifacts
+end_time: 1763939645210
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: ef1cad83c93a4ce2be5b9403cf8af929
+run_name: nosy-dog-565
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763939643561
+status: 3
+tags: []
+user_id: chelynlee

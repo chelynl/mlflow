@@ -8,6 +8,9 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
 
+import os
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
 '''
 MLFlow Tracking
 - Run: single execution of code; records code version, hyperparams, metrics, tags, etc.
@@ -45,8 +48,8 @@ if __name__ == "__main__":
     np.random.seed(40)
 
     # Read the wine-quality csv file from local
-    data = pd.read_csv('/Users/chelynlee/Downloads/MLFlow_Udemy/red-wine-quality.csv')
-    data.to_csv("/Users/chelynlee/Downloads/MLFlow_Udemy/red-wine-quality.csv", index=False)
+    data = pd.read_csv('red-wine-quality.csv')
+    data.to_csv("red-wine-quality.csv", index=False)
 
     # Split the data into training and test sets. (0.75, 0.25) split.
     train, test = train_test_split(data)

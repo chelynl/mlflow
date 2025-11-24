@@ -1,0 +1,10 @@
+At this point, we have our model packaged and stored in our desired format (i.e. multiple models stored as part of your multiple runs and experiments --> deploy the best one).
+There is an evaluatiion step before deployment.
+
+- mlflow.evaluate() = API provided by mlflow to evaluate the performance of mlflow models and saves the evaluation metrics and graphs to the tracking server
+    - Applies the trained model to the specified dataset and computes a range of performance metrics depending on goal (i.e. classification vs regression)
+    - Can generate various model performance plots (e.g. confusion matrix, precision-recall curve, ROC curve, etc.) depending on task type
+    - Can provide model explanations, which aim to explain the model's predictions and identify the factors driving those predictions
+    - All evaluation results including computed metrics/plots/explanations are logged to mlflow tracking (mlflow tracking then allows you to organize and compare different model runs, track exp configurations, share results)
+    - Currently supports models with the python_function (pyfunc) flavor
+

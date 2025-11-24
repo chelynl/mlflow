@@ -1,0 +1,15 @@
+creation_timestamp: 1763948386903
+current_stage: None
+deployment_job_state: null
+description: elastic net trained with alpha and l1_ratio
+last_updated_timestamp: 1763948802618
+model_id: m-5a1bbe26aa414fe4bfa5b64a3e565118
+name: elastic_net
+run_id: bf5e1c28b4b244118a4186b94e742a0c
+run_link: ''
+source: models:/m-5a1bbe26aa414fe4bfa5b64a3e565118
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/545721373842402587/models/m-5a1bbe26aa414fe4bfa5b64a3e565118/artifacts
+user_id: null
+version: 1

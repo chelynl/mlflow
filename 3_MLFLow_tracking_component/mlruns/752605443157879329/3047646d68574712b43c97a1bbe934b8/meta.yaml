@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/projects/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/752605443157879329/3047646d68574712b43c97a1bbe934b8/artifacts
+end_time: 1763867553934
+entry_point_name: ''
+experiment_id: '752605443157879329'
+lifecycle_stage: active
+run_id: 3047646d68574712b43c97a1bbe934b8
+run_name: victorious-shad-564
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763867551252
+status: 3
+tags: []
+user_id: chelynlee

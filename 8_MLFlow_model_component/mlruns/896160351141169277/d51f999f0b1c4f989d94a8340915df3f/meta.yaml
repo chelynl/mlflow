@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/d51f999f0b1c4f989d94a8340915df3f/artifacts
+end_time: 1763940256848
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: d51f999f0b1c4f989d94a8340915df3f
+run_name: stylish-bug-944
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763940255187
+status: 3
+tags: []
+user_id: chelynlee

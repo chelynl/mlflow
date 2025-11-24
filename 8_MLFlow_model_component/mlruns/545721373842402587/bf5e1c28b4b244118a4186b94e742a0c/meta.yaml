@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/545721373842402587/bf5e1c28b4b244118a4186b94e742a0c/artifacts
+end_time: 1763948225726
+entry_point_name: ''
+experiment_id: '545721373842402587'
+lifecycle_stage: active
+run_id: bf5e1c28b4b244118a4186b94e742a0c
+run_name: wistful-fawn-350
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763948224039
+status: 3
+tags: []
+user_id: chelynlee

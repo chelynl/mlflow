@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/e30c10491d8741f9a9dea77bc6cbe822/artifacts
+end_time: 1763939437252
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: e30c10491d8741f9a9dea77bc6cbe822
+run_name: trusting-ray-525
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763939435539
+status: 3
+tags: []
+user_id: chelynlee

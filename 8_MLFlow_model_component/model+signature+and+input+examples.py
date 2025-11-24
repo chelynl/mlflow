@@ -10,8 +10,13 @@ import mlflow
 import mlflow.sklearn
 from pathlib import Path
 import os
+# import mlflow model signature and schema
 from mlflow.models.signature import ModelSignature, infer_signature
 from mlflow.types.schema import Schema,ColSpec
+
+'''
+The purpose of this script is to create a model signature for the wine quality prediction model MANUALLY using mlflow.
+'''
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
@@ -29,6 +34,9 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+import os
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
@@ -36,7 +44,7 @@ if __name__ == "__main__":
 
     # Read the wine-quality csv file from the URL
     data = pd.read_csv("red-wine-quality.csv")
-    #os.mkdir("data/")
+    # os.mkdir("data/")
     data.to_csv("data/red-wine-quality.csv", index=False)
     # Split the data into training and test sets. (0.75, 0.25) split.
     train, test = train_test_split(data)
@@ -51,7 +59,7 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="/Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns")
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
     exp = mlflow.set_experiment(experiment_name="experiment_signature")
@@ -73,6 +81,8 @@ if __name__ == "__main__":
 
 
     mlflow.set_tags(tags)
+
+    # Allow entities like hyperparameters/metrics/etc. to log automatically but not model signatures, input examples, or models
     mlflow.sklearn.autolog(
         log_input_examples=False,
         log_model_signatures=False,
@@ -90,6 +100,7 @@ if __name__ == "__main__":
     print("  MAE: %s" % mae)
     print("  R2: %s" % r2)
 
+    # Create two list of dictionaries specifying the input data and output data
     input_data = [
         {"name": "fixed acidity", "type": "double"},
         {"name": "volatile acidity", "type": "double"},
@@ -107,11 +118,14 @@ if __name__ == "__main__":
 
     output_data = [{'type': 'long'}]
 
+    # Create input and output schema objects
     input_schema = Schema([ColSpec(col["type"], col['name']) for col in input_data])
     output_schema = Schema([ColSpec(col['type']) for col in output_data])
 
+    # Create a model signature (manual)
     signature = ModelSignature(inputs=input_schema, outputs=output_schema)
 
+    # Create an input example with 5 records
     input_example = {
         "fixed acidity": np.array([7.2, 7.5, 7.0, 6.8, 6.9]),
         "volatile acidity": np.array([0.35, 0.3, 0.28, 0.38, 0.25]),
@@ -127,10 +141,15 @@ if __name__ == "__main__":
         "quality": np.array([6, 7, 6, 8, 7])
     }
     mlflow.log_artifact("red-wine-quality.csv")
+
+    # log the model and pass in model signature and input example
     mlflow.sklearn.log_model(lr, "model", signature=signature, input_example=input_example)
+
     artifacts_uri=mlflow.get_artifact_uri()
-    print("The artifact path is",artifacts_uri )
+    print("The artifact path is", artifacts_uri)
+
     mlflow.end_run()
+
     run = mlflow.last_active_run()
     print("Active run id is {}".format(run.info.run_id))
     print("Active run name is {}".format(run.info.run_name))

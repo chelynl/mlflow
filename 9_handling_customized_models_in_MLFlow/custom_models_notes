@@ -1,0 +1,7 @@
+What if you want to use a ML library that is not supported by MLFlow's built-in flavors?
+Built-in utilities are not sufficient to package custom inference code into a MLflow model
+
+Custom python models in MLflow empower data scientists to incorporate their own algorithms, custom logic, and external libraries seamlessly into the model building process. 
+You can then integrate your custom model with MLflow, allowing you to package and use it as an MLflow model only. This way, you can leverage MLflow tracking and deployment capabilities even with models from unsupported libraries.
+
+Custom flavors allows for the creation of custom serialization and deserialization logic for model packaging and deployment.

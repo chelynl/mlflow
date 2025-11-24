@@ -1,0 +1,8 @@
+aliases:
+  champion: '1'
+creation_timestamp: 1763948386887
+deployment_job_id: null
+deployment_job_state: null
+description: Elastic net model
+last_updated_timestamp: 1763949517896
+name: elastic_net

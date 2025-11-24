@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/654d907c48ac488cb90fe91966aa21d4/artifacts
+end_time: 1763940506668
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: 654d907c48ac488cb90fe91966aa21d4
+run_name: victorious-wren-440
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763940504029
+status: 3
+tags: []
+user_id: chelynlee

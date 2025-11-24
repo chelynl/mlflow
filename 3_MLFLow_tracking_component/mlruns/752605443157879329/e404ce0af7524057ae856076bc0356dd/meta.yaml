@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/projects/MLFlow_Udemy/3_MLFLow_tracking_component/mlruns/752605443157879329/e404ce0af7524057ae856076bc0356dd/artifacts
+end_time: 1763867990342
+entry_point_name: ''
+experiment_id: '752605443157879329'
+lifecycle_stage: active
+run_id: e404ce0af7524057ae856076bc0356dd
+run_name: calm-fish-269
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763867987705
+status: 3
+tags: []
+user_id: chelynlee

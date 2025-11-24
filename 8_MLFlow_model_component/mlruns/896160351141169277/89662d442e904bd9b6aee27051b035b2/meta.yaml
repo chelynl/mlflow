@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/8_MLFlow_model_component/mlruns/896160351141169277/89662d442e904bd9b6aee27051b035b2/artifacts
+end_time: 1763940935993
+entry_point_name: ''
+experiment_id: '896160351141169277'
+lifecycle_stage: active
+run_id: 89662d442e904bd9b6aee27051b035b2
+run_name: inquisitive-bat-939
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763940934305
+status: 3
+tags: []
+user_id: chelynlee

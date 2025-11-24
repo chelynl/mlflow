@@ -20,7 +20,11 @@ MLflow model component consists of 3 things: storage format, model signature, mo
     - used by mlflow to generate REST API for the model (then used for inference)
     - defined by the python function annotations syntax
     - stored as part of the mlflow model and can be accessed by other mlflow components
-    - mlflow.autolog() logs model signature by default; you need to explicitly log model signature for 
+    - mlflow.autolog() logs model signature by default; you need to explicitly log model signature for
+    - signature enforcement checks if the data matches the specified signature
+        - Model signature enforcement = process of defining and validating the input and output schema for a ML model
+        - necessary to enforce the signature during deployment or while interacting with the model
+        - model signatures are recognized and enforced by standard mlflow model deployment tools (i.e. mlflow models serve tool)
 - Model API: standardized interface for interacting with the model
     - We can generate the API easily using flask, FastAPI, etc. 
     - Model API supports both synchronous/asynchronous requests and can be used for real-time inference or batch processing
@@ -34,3 +38,11 @@ Flavor = specific way of serializing and storing a ML model
 MLflow also provides functionality for evaluating the models using metrics (accuracy, f1-score, precision, recall). 
 It provides tools to deploy mlflow models to various platforms such as docker container, REST API, TF serving, and AWS Sagemaker.
 If you have an on-prem data center or another server, you can set a custom deployment target (server) along with the necessary code.
+
+MLflow model API functions:
+- mlflow model API has integrations with popular libraries/flavors (i.e. sklearn, tf, pytorch, etc.) and have own implementation of functions in model API to package, version, and deploy the trained model
+- arguments may vary depending on the library you're using
+- Examples for mlflow.sklearn:
+    - save_model(): saves a sklearn model to a path on the local file system. Produces model containing 2 flavors mlflow.sklearn and mlflow.pyfunc. You can persist the model in a local directory without logging it to a tracking server.
+    - load_model(): loads a sklearn model from a local file or a run.
+    - log_model(): logs a sklearn model as an artifact to a tracking server, making it accessible in the mlflow UI or other interfaces. Produces model containing 2 flavors mlflow.sklearn and mlflow.pyfunc.
