@@ -28,6 +28,8 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
@@ -61,6 +63,7 @@ if __name__ == "__main__":
     print("Lifecycle_stage: {}".format(exp.lifecycle_stage))
     print("Creation timestamp: {}".format(exp.creation_time))
 
+    # create a new run
     mlflow.start_run()
     tags = {
         "engineering": "ML platform",
@@ -71,17 +74,19 @@ if __name__ == "__main__":
     mlflow.set_tags(tags)
 
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
+    # train the model
     lr.fit(train_x, train_y)
 
     predicted_qualities = lr.predict(test_x)
 
     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
-
+    # print metrics and params
     print("Elasticnet model (alpha={:f}, l1_ratio={:f}):".format(alpha, l1_ratio))
     print("  RMSE: %s" % rmse)
     print("  MAE: %s" % mae)
     print("  R2: %s" % r2)
 
+    # log params and metrics
     mlflow.log_params({
         "alpha": 0.3,
         "l1_ratio": 0.3
@@ -93,5 +98,6 @@ if __name__ == "__main__":
         "mae": mae
     })
     run = mlflow.last_active_run()
-    mlflow.sklearn.log_model(lr, "model", registered_model_name='elastcinet-api')
+    # log model and register it by passing the registered_model_name parameter
+    mlflow.sklearn.log_model(lr, name="model", registered_model_name='elastcinet-api')
     mlflow.end_run()

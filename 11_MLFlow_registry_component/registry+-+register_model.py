@@ -28,6 +28,8 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
@@ -93,15 +95,20 @@ if __name__ == "__main__":
         "mae": mae
     })
     run = mlflow.last_active_run()
-    mlflow.sklearn.log_model(lr, "model")
 
+    # log model first
+    mlflow.sklearn.log_model(lr, name="model")
+
+    # register model with current run id
     mlflow.register_model(
         model_uri='runs:/{}/model'.format(run.info.run_id),
         name='elastic-api-2'
     )
 
-    ld = mlflow.pyfunc.load_model(model_uri="models:/elastic-api-2/1")
+    # load the registered model and make predictions
+    ld = mlflow.pyfunc.load_model(model_uri="models:/elastic-api-2/1") # models:/<model_name>/<version>
     predicted_qualities=ld.predict(test_x)
+    # print results
     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
     print("  RMSE_test: %s" % rmse)
     print("  MAE_test: %s" % mae)

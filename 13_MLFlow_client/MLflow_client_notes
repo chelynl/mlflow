@@ -1,0 +1,26 @@
+MLflow Client has two main components:
+1. Tracking Server
+    - records experiment runs and stores model artifacts BUT needs instructions from a client
+    - 
+2. Client
+    - encompasses a collection of tools and libraries that allow users to interact with the MLflow platform programatically
+    - provides instructions including commands and data to record such as metrics, parameters, tags, and artifacts
+
+Mlflow library vs MLflow Client
+- MLflow library is a higher level API designed for interaction with the MLflow tracking server
+- MLflow client serves as a lower level API that directly translates to MLflow REST API calls and is primarily used to interact with the core components of MLflow
+
+MLflow client enhances the MLflow library by providing additional functionality such as providing a more flexible functionality for interacting with the MLflow tracking server.
+
+Mlflow client class functions for experiment management:
+- create_experiment()
+- set_experiment_tag()
+- get_experiment()
+- get_experiment_by_name()
+- rename_experiment()
+- delete_experiment()
+- restore_experiment()
+- search_experiments()
+
+1. Start tracking server: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
+2. Run code

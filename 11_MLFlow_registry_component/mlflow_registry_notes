@@ -9,13 +9,14 @@ Model Registry Component = centralized model store, set of APIs, and UI, to coll
 - Transition to Production: transition a model from a staging environment to a production environment with clear approval processes and auditing
 - Model Lineage and Audit Trails: keeps track of the entire lineage of each model version
 
-You can register models in 2 ways: UI or APIs
+You can register models in 3 ways: UI vs. APIs vs. MLflow Client
 
 Prerequisites for UI Method:
 - Database backend store is required to use model registry for uploading the metadata of the model (i.e. model name, location, inputs, outputs, etc.)
     - FYI: the model itself is not uploaded to the registry, it just stays in its default location
-- Models should be already logged using using the log_model methods of the corresponding model flavor
+- Models should be already logged using using the log_model methods of the corresponding model flavor and experiment should be finished
 
+How to register a model using UI:
 1. Start mlflow tracking server: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
 2. Run code in which the tracking uri is set to the tracking server uri
 3. Go to the UI and select the run (model) to register
@@ -27,3 +28,26 @@ Prerequisites for UI Method:
 Use custom 'ALIASES' to denote phase of a model version (i.e. staging, prod, etc.)
 - Assign custom name references to aliases for any model version
 
+How to register a model using APIs:
+- Either use mlflow model API or client tracking API interface for registering a model
+- Below is an example of using mlflow model API to register a model
+- You can register a model either during logging process (log_model) or after the model is logged (register_model)
+- log_model(): logs a sklearn model as an artifact to a tracking server, making it accessible in the mlflow UI or other interfaces
+    - produces model containing 2 flavors (mlflow.sklearn and mlflow.pyfunc)
+    - registers model with version and specified name
+- register_model(): create a new model version in model registry for the model files specified by model_uri
+    - model is registered after logging has been completed
+
+1. Start the tracking server: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
+2. Run code in which the tracking uri is set to the tracking server uri
+    - use log_model to log the model and register it in the same step
+3. If you change the params and run it again with the same registered_model_name, it will create/register a new version of the model
+4. You can add metadata to the model using the UI or use the mlflow client function
+
+Most of the functionalities done in MLFlow tracking models / registry can be done through various functions of MLFlow client.
+
+What if you need to register a model that's saved outside the domain of MLflow? Or external models?
+- External model meaning it is created by some external code and is present in some directory
+1. Start the tracking server
+2. Run code that loads the external model, sets tracking uri (creates experiment), and registers the model with log_model
+3. You can see in the UI that the model gets saved as an artifact and no other metadata is saved in the tracking server

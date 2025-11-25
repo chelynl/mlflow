@@ -21,6 +21,10 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
+# Create main function that runs the pipeline
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--alpha", type=float, required=False, default=0.4)
@@ -86,4 +90,5 @@ def main():
         mlflow.sklearn.log_model(lr, "model")
 
 if __name__ == "__main__":
+    # call main function rather than running it directly here
     main()

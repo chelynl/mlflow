@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/projects/MLFlow_Udemy/12_MLFlow_project_component/mlruns/413247321586119445/8660c6888b364ecabad8ec2d1d080364/artifacts
+end_time: 1764037314235
+entry_point_name: ''
+experiment_id: '413247321586119445'
+lifecycle_stage: active
+run_id: 8660c6888b364ecabad8ec2d1d080364
+run_name: likeable-eel-595
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764037255606
+status: 4
+tags: []
+user_id: chelynlee

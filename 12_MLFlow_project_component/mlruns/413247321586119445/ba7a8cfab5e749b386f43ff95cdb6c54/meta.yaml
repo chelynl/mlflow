@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/projects/MLFlow_Udemy/12_MLFlow_project_component/mlruns/413247321586119445/ba7a8cfab5e749b386f43ff95cdb6c54/artifacts
+end_time: 1764037153221
+entry_point_name: ''
+experiment_id: '413247321586119445'
+lifecycle_stage: active
+run_id: ba7a8cfab5e749b386f43ff95cdb6c54
+run_name: beautiful-ray-838
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764037149188
+status: 4
+tags: []
+user_id: chelynlee

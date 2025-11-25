@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/projects/MLFlow_Udemy/12_MLFlow_project_component/mlruns/413247321586119445/1becd60157b94de0b2969b6235fb760f/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '413247321586119445'
+lifecycle_stage: active
+run_id: 1becd60157b94de0b2969b6235fb760f
+run_name: thoughtful-wasp-969
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764037186755
+status: 1
+tags: []
+user_id: chelynlee

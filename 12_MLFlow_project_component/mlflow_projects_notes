@@ -1,0 +1,78 @@
+MLflow Projects = tool to help organize and share your ML code and models. Provides a simple way to define and manage the project's dependencies, environment, and entry points.
+A MLproject file can explain how a project should be structured, which files are part of the project, what dependencies are required, and more importantly, how to run the project.
+The project component contains both the API and CLI tools for running the projects 
+Think of your project as a folder that contains all the files related to your code. This folder can be a simple folder in your local machine or a cloud directory (git repository).
+
+MLproject file = YAML formatted text file which acts like a guidebook that explains your projects to others. It serves as a central configuration file that specifies the project's entry points, dependencies, and associated parameters.
+- don't get confused with MLmodel file that gets stored as an artifact (describes single created model)
+- project file describes overall workflow of the project and how to run it
+- it has no extension, spelling must be exact, case sensitive! Otherwise, mlflow will not recognize it.
+
+Usually, project file is characterized by 3 main components:
+- Name: name you want to give your project
+- entry points: define the different tasks (mini programs) or actions that can be executed within the project
+    - each entry point is associated with a specific command and a set of parameters
+    - entry points define the different tasks or operations that can be executed as part of a ML project
+- environment: define the dependencies required to run the project (necessary to execute project entry points)
+    - project environment is the execution environment where your code runs (include required dependencies, libraries, system configurations)
+    - 4 project environments supported by mlflow: virtual environment, conda environment, docker container, and system environment
+
+MLproject environments
+- System environment:
+    - local OS environment with python and required packages installed in it
+    - you need to ensure that all project dependencies are available and properly configured on your system
+    - you simply run your project in the OS you are using after configuring it manually
+    - cons: causes conflicts in dependencies as everyone has a different machine
+
+- Virtual environment: 
+    - acts as a separate workspace for your project, isolating it from other projects on the system using tools like virtualenv and pyenv
+    - it will create and activate a virtual execution environment prior to running the project
+    - include python_env config in MLproject file
+    - In MLproject: "python_env: files/config/python_env.yaml"
+- Conda environment:
+    - Include conda_env config specifying the path of conda.yaml in MLproject file
+    - In MLproject: "conda_env: conda.yaml"
+    - Run in terminal to get conda.yaml in workdir of your choice: conda env export --name mlflow_demo1 > conda.yaml
+- Docker container: 
+    - Docker containers provide you a self-contained environment for running MLflow projects
+    - Allows to include non-Python dependencies like Java libraries and CUDA dependencies
+    - Specify pre-build Docker image OR use --build-image flag with mlflow run to build a new image based on the existing image
+    - Environment variables (MLFLOW_TRACKING_URI) are propagated inside the Docker container during project execution, and the host system's tracking directory is mounted inside the container, ensuring accessibility to metrics, parameters, and artifacts
+    - In MLproject: "docker_env: image: mlflow-docker-example-environment"
+    - Examples that use docker environment:
+        - image without a registry path
+        - mounting volumes and specifying environment variables
+        - image in a remote registry (e.g. Docker Hub, Amazon ECR)
+        - build a new image
+
+There are 2 ways to run the project:
+- CLI command (mlflow run)
+    - Run command: mlflow run [OPTIONS] URI
+    - According to how you access the source code, the OPTIONS of the run command will vary
+
+    Options include:
+    -e, --entry-point <TEXT>: entry point within the project
+    -v, --version <TEXT>: version of the project to run
+    -P, --param-list <TEXT>: parameters to pass to the entry point
+    -A, --docker-args <TEXT>: arguments to pass to the docker run command
+    --experiment-name <TEXT>: name of the experiment to create
+    --experiment-id <TEXT>: ID of the experiment to create
+    -b, --backend <TEXT>: backend to use for running the project
+    -c, --backend-config <TEXT>: backend config to use for running the project
+    --env-manager <TEXT>: environment manager to use for running the project
+    --storage-dir <TEXT>: directory to store the project run
+    --run-id <TEXT>: ID of the run to use for running the project
+    --run-name <TEXT>: name of the run to use for running the project
+    --build-image <TEXT>: build image to use for running the project
+
+    Environment Variables:
+    - MLFLOW_EXPERIMENT_NAME: can be set to provide a default value for the --experiment-name option
+    - MLFLOW_EXPERIMENT_ID: can be set to provide a default value for the --experiment-id option
+    - MLFLOW_TMP_DIR: can be set to provide a default value for the --storage-dir option when using the local backend
+
+    1. In the terminal, run: set MLFLOW_TRACKING_URI=http://127.0.0.1:5000
+    2. Then run: mlflow run --entry-point ElasticNet -P alpha=0.5 -P l1_ratio=0.5 --experiment-name "Project exp 1" .
+
+
+- API function (mlflow.projects.run)
+

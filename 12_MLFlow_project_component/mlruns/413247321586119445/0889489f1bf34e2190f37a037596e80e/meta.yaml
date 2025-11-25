@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/chelynlee/projects/MLFlow_Udemy/12_MLFlow_project_component/mlruns/413247321586119445/0889489f1bf34e2190f37a037596e80e/artifacts
+end_time: 1764037166627
+entry_point_name: ''
+experiment_id: '413247321586119445'
+lifecycle_stage: active
+run_id: 0889489f1bf34e2190f37a037596e80e
+run_name: merciful-flea-841
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764037165629
+status: 4
+tags: []
+user_id: chelynlee

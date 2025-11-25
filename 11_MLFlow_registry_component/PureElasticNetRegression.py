@@ -20,6 +20,13 @@ parser.add_argument("--alpha", type=float, required=False, default=0.4)
 parser.add_argument("--l1_ratio", type=float, required=False, default=0.4)
 args = parser.parse_args()
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
+'''
+Removed allmlflow components from this file (purely ML code)
+'''
+
 def get_path_type(path):
     if os.path.isabs(path) and os.path.exists(path):
         if os.path.isdir(path):
@@ -69,5 +76,6 @@ if __name__ == "__main__":
     print("  MAE: %s" % mae)
     print("  R2: %s" % r2)
 
-    filename = 'elastic-net-regression.pkl'
+    # Store model as pickle file
+    filename = '/Users/chelynlee/projects/MLFlow_Udemy/11_MLFlow_registry_component/elastic-net-regression.pkl'
     pickle.dump(lr, open(filename, 'wb'))
