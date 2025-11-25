@@ -6,7 +6,8 @@ mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 client = MlflowClient()
 
-run = client.get_run("622a509ad9594658960ccf0088274daa")
+# get run by run id
+run = client.get_run("a06bc72461074084be3073cc45c529e4")
 
 print(f"Run tags: {run.data.tags}")
 print(f"Experiment id: {run.info.experiment_id}")

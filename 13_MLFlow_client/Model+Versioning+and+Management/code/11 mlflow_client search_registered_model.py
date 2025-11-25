@@ -5,8 +5,20 @@ mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 client = MlflowClient()
 
+# mvs = client.search_registered_models(
+#     filter_string="tags.Dataset = 'Red Wine Quality'",
+#     max_results=10,
+#     order_by=["name ASC"]
+# )
+
+# mvs = client.search_registered_models(
+#     filter_string="tags.framework = 'sklearn'",
+#     max_results=10,
+#     order_by=["name ASC"]
+# )
+
 mvs = client.search_registered_models(
-    filter_string="tags.Dataset = 'Red Wine Quality'",
+    filter_string="name = 'linear-regression-model'",
     max_results=10,
     order_by=["name ASC"]
 )

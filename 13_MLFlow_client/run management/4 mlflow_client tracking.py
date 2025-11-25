@@ -6,13 +6,17 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
 import numpy as np
+import os
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
+
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy/13_MLFlow_client/run management")
 
 client = MlflowClient()
 
 run = client.create_run(
-    experiment_id=25,
+    experiment_id=1,
     tags={
         "Version": "v1",
         "Priority": "P1"
@@ -57,13 +61,14 @@ predicted_qualities = lr.predict(test_x)
 
 joblib.dump(lr, "linear_regression.pkl")
 
+# explicitly mention run id in every logging function while using the client
 alpha = client.log_param(run.info.run_id, "alpha", alpha)
 l1_ratio = client.log_param(run.info.run_id, "l1_ratio", l1_ratio)
-
+# log metrics
 client.log_metric(run.info.run_id, "rmse", rmse)
 client.log_metric(run.info.run_id, "mae", mae)
 client.log_metric(run.info.run_id, "r2", r2)
-
+# log artifacts
 client.log_artifact(run.info.run_id, "linear_regression.pkl")
 client.log_artifact(run.info.run_id,"red-wine-quality.csv")
 

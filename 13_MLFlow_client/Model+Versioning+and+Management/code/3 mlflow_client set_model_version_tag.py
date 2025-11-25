@@ -5,6 +5,7 @@ mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 client = MlflowClient()
 
+# set tags for model version
 client.set_model_version_tag(
     name="linear-regression-model",
     version="1",

@@ -1,5 +1,6 @@
 import mlflow
 from mlflow import MlflowClient
+# get view type value to view type parameter to search_experiments()
 from mlflow.entities import ViewType
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
@@ -7,13 +8,15 @@ mlflow.set_tracking_uri("http://127.0.0.1:5000")
 # initialize mlflow client class object
 client = MlflowClient()
 
+# create an empty run (not active) --> run object which you can extract info from
+# prepares run but does not run actual ML code
 run = client.create_run(
-    experiment_id=experiment_id,
+    experiment_id="1",
     tags={
         "Version": "v1",
         "Priority": "P1"
     },
-    run_name="run from client 2"
+    run_name="run from client"
 )
 
 print(f"Run tags: {run.data.tags}")

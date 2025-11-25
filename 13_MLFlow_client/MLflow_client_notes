@@ -20,7 +20,9 @@ Mlflow client class functions for experiment management:
 - rename_experiment()
 - delete_experiment()
 - restore_experiment()
-- search_experiments()
+- search_experiments(): search for experiments that match the specified search query
+- get_metric_history(): retrieve the history of a specific metric that has been logged for a run (useful in DL)
 
-1. Start tracking server: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
+1. Start tracking server: 
+mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 127.0.0.1 --port 5000
 2. Run code

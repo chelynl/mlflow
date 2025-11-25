@@ -10,6 +10,8 @@ from mlflow.entities import ViewType
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
 
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))

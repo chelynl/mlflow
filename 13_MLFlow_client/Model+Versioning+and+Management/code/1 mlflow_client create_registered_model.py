@@ -5,6 +5,7 @@ mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 client = MlflowClient()
 
+# Creates empty registry with no model inside it
 client.create_registered_model(
     name="linear-regression-model",
     tags={
