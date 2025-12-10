@@ -22,6 +22,9 @@ import matplotlib.pyplot as plt
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
 # get arguments from command
 parser = argparse.ArgumentParser()
 parser.add_argument("--alpha", type=float, required=False, default=0.7)
@@ -65,7 +68,7 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="/Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns")
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
     exp = mlflow.set_experiment(experiment_name="experiment_model_evaluation")
@@ -149,10 +152,11 @@ if __name__ == "__main__":
         artifact_path="sklear_mlflow_pyfunc",
         python_model=SklearnWrapper(),
         artifacts=artifacts,
-        code_path=["main.py"],
+        code_paths=["10_MLFlow_model_evaluation/model+customization.py"],
         conda_env=conda_env
    )
 
+    # define custom metrics
     def squared_diff_plus_one(eval_df, _builtin_metrics):
         return np.sum(np.abs(eval_df["prediction"] - eval_df["target"] + 1) ** 2)
 
@@ -162,13 +166,13 @@ if __name__ == "__main__":
     squared_diff_plus_one_metric = make_metric(
         eval_fn=squared_diff_plus_one,
         greater_is_better=False,
-        name="squared diff plus one"
+        name="squared_diff_plus_one"
     )
 
     sum_on_target_divided_by_two_metric = make_metric(
         eval_fn=sum_on_target_divided_by_two,
         greater_is_better=True,
-        name="sum on target divided by two"
+        name="sum_on_target_divided_by_two"
     )
 
 
@@ -182,13 +186,17 @@ if __name__ == "__main__":
         return {"example_scatter_plot_artifact": plot_path}
 
     artifacts_uri = mlflow.get_artifact_uri("sklear_mlflow_pyfunc")
+    # get tracking uri of the model
+    model_uri = "runs:/{}/sklear_mlflow_pyfunc".format(mlflow.active_run().info.run_id)
+
+    # After logging the model, we can evaluate it and pass the tracking uri of the model
     mlflow.evaluate(
-        artifacts_uri,
+        model_uri,
         test,
         targets="quality",
         model_type="regressor",
         evaluators=["default"],
-        custom_metrics=[
+        extra_metrics=[
             squared_diff_plus_one_metric,
             sum_on_target_divided_by_two_metric
         ],

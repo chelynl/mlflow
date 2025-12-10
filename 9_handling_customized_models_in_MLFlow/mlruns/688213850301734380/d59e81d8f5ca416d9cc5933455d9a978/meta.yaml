@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/d59e81d8f5ca416d9cc5933455d9a978/artifacts
+end_time: 1764122186626
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: d59e81d8f5ca416d9cc5933455d9a978
+run_name: chill-bat-333
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122186272
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/ccfb73b6bd8541a5ae7db8c3a388d03a/artifacts
+end_time: 1764125651277
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: ccfb73b6bd8541a5ae7db8c3a388d03a
+run_name: unruly-squirrel-756
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125649026
+status: 3
+tags: []
+user_id: chelynlee

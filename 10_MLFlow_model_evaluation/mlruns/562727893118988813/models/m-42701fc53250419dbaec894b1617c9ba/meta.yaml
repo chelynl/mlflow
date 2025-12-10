@@ -1,0 +1,10 @@
+artifact_location: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/models/m-42701fc53250419dbaec894b1617c9ba/artifacts
+creation_timestamp: 1764127078757
+experiment_id: '562727893118988813'
+last_updated_timestamp: 1764127078783
+model_id: m-42701fc53250419dbaec894b1617c9ba
+model_type: null
+name: baseline_sklearn_mlflow_pyfunc
+source_run_id: 7be32188ae3e4d539bb97a7f3093518f
+status: 2
+status_message: null

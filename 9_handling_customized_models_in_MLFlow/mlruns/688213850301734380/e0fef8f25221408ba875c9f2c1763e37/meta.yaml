@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/e0fef8f25221408ba875c9f2c1763e37/artifacts
+end_time: 1764122424052
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: e0fef8f25221408ba875c9f2c1763e37
+run_name: blushing-seal-970
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122423056
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,6 @@
+artifact_location: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380
+creation_time: 1764121926794
+experiment_id: '688213850301734380'
+last_update_time: 1764121926794
+lifecycle_stage: active
+name: experiment_custom_sklearn

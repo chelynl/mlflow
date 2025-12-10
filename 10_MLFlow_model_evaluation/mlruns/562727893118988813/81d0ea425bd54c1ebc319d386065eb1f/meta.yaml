@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/81d0ea425bd54c1ebc319d386065eb1f/artifacts
+end_time: 1764127187979
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 81d0ea425bd54c1ebc319d386065eb1f
+run_name: rare-turtle-592
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764127187427
+status: 3
+tags: []
+user_id: chelynlee

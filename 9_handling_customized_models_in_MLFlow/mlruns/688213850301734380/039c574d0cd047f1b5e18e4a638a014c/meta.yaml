@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/039c574d0cd047f1b5e18e4a638a014c/artifacts
+end_time: 1764122068566
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: 039c574d0cd047f1b5e18e4a638a014c
+run_name: kindly-newt-612
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122068002
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,23 @@
+artifact_path: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/models/m-2f943ae5e6a5403ab753a236992ec69a/artifacts
+flavors:
+  python_function:
+    artifacts:
+      baseline_sklearn_model:
+        path: artifacts/baseline_sklearn_model.pkl
+        uri: baseline_sklearn_model.pkl
+    cloudpickle_version: 3.0.0
+    code: code
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.12.7
+    streamable: false
+mlflow_version: 3.3.2
+model_id: m-2f943ae5e6a5403ab753a236992ec69a
+model_size_bytes: 3641
+model_uuid: m-2f943ae5e6a5403ab753a236992ec69a
+prompts: null
+run_id: 591cd9497b1349baad084dc6e71a14af
+utc_time_created: '2025-11-26 03:01:41.030872'

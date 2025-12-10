@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/912192418311653339/c0cb25e8cb9d46b591d2c708f5d69246/artifacts
+end_time: 1764124657262
+entry_point_name: ''
+experiment_id: '912192418311653339'
+lifecycle_stage: active
+run_id: c0cb25e8cb9d46b591d2c708f5d69246
+run_name: clumsy-elk-364
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764124656494
+status: 3
+tags: []
+user_id: chelynlee

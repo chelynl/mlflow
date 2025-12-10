@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/ee1b67e1227e4291937938d46a0ea22e/artifacts
+end_time: 1764122260039
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: ee1b67e1227e4291937938d46a0ea22e
+run_name: delightful-pig-766
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122259706
+status: 3
+tags: []
+user_id: chelynlee

@@ -19,6 +19,9 @@ import cloudpickle
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
 # get arguments from command
 parser = argparse.ArgumentParser()
 parser.add_argument("--alpha", type=float, required=False, default=0.4)
@@ -62,7 +65,8 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="/Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns")
+
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
     exp = mlflow.set_experiment(experiment_name="experiment_custom_sklearn")
@@ -147,11 +151,15 @@ if __name__ == "__main__":
         artifact_path="sklear_mlflow_pyfunc",
         python_model=SklearnWrapper(),
         artifacts=artifacts,
-        code_path=["main.py"],
+        code_paths=["/Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/model+customization.py"],
         conda_env=conda_env
     )
-    ld = mlflow.pyfunc.load_model(model_uri="runs:/ee0c9144a0e941168dcdebe82e9cae47/sklear_mlflow_pyfunc")
+
+    # load the model and specify the uri of where you want to load the model from
+    ld = mlflow.pyfunc.load_model(model_uri="runs:/27a5f44a5a944b7e98d310892235d8a3/sklear_mlflow_pyfunc")
+    # use predict method on loaded model
     predicted_qualities=ld.predict(test_x)
+    # print metrics
     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
     print("  RMSE_test: %s" % rmse)
     print("  MAE_test: %s" % mae)

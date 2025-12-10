@@ -1,0 +1,9 @@
+digest: fc6d34fe
+name: dataset
+profile: '{"features_shape": [400, 12], "features_size": 4800, "features_nbytes":
+  38400}'
+schema: '{"mlflow_tensorspec": {"features": "[{\"type\": \"tensor\", \"tensor-spec\":
+  {\"dtype\": \"float64\", \"shape\": [-1, 12]}}]", "targets": null}}'
+source: '{"tags": {"mlflow.user": "chelynlee", "mlflow.source.name": "/Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/load_model.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "4a2b97faec2a37cf2c6c2cda3477173795088cc4"}}'
+source_type: code

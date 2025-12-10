@@ -1,0 +1,10 @@
+artifact_location: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/models/m-1c3bb7df4b8b400d95b798dd1775f304/artifacts
+creation_timestamp: 1764122158275
+experiment_id: '688213850301734380'
+last_updated_timestamp: 1764122158289
+model_id: m-1c3bb7df4b8b400d95b798dd1775f304
+model_type: null
+name: sklear_mlflow_pyfunc
+source_run_id: 21c0e6c6f4c34fa184cf7d82d3382ff3
+status: 3
+status_message: null

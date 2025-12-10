@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/4c503087ce5340e083386e7fa3486da2/artifacts
+end_time: 1764123236288
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: 4c503087ce5340e083386e7fa3486da2
+run_name: honorable-squid-840
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764123235726
+status: 3
+tags: []
+user_id: chelynlee

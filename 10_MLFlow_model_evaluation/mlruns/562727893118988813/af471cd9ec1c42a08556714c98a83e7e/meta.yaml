@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/af471cd9ec1c42a08556714c98a83e7e/artifacts
+end_time: 1764125264993
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: af471cd9ec1c42a08556714c98a83e7e
+run_name: serious-wren-90
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125264499
+status: 3
+tags: []
+user_id: chelynlee

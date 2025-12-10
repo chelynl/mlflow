@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/775e565f15654969a337f968cca4905c/artifacts
+end_time: 1764126226285
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 775e565f15654969a337f968cca4905c
+run_name: selective-fish-237
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764126224753
+status: 3
+tags: []
+user_id: chelynlee

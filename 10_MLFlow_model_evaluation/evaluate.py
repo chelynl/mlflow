@@ -25,6 +25,9 @@ parser.add_argument("--alpha", type=float, required=False, default=0.4)
 parser.add_argument("--l1_ratio", type=float, required=False, default=0.4)
 args = parser.parse_args()
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
 # evaluation function
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
@@ -62,10 +65,10 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="/Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns")
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
-    exp = mlflow.set_experiment(experiment_name="experiment_custom_sklearn")
+    exp = mlflow.set_experiment(experiment_name="experiment_model_evaluation")
     #get_exp = mlflow.get_experiment(exp_id)
 
     print("Name: {}".format(exp.name))
@@ -147,16 +150,21 @@ if __name__ == "__main__":
         artifact_path="sklear_mlflow_pyfunc",
         python_model=SklearnWrapper(),
         artifacts=artifacts,
-        code_path=["main.py"],
+        code_paths=["10_MLFlow_model_evaluation/model+customization.py"],
         conda_env=conda_env
-   )
-    artifacts_uri = mlflow.get_artifact_uri("sklear_mlflow_pyfunc")
+    )
+
+    # get tracking uri of the model
+    # artifacts_uri = mlflow.get_artifact_uri("sklear_mlflow_pyfunc") # OLD
+    model_uri = "runs:/{}/sklear_mlflow_pyfunc".format(mlflow.active_run().info.run_id)
+
+    # After logging the model, we can evaluate it and pass the tracking uri of the model
     mlflow.evaluate(
-        artifacts_uri,
-        test,
-        targets="quality",
+        model_uri,
+        test, # test dataset
+        targets="quality",   # target variable
         model_type="regressor",
-        evaluators=["default"]
+        evaluators=["default"] 
     )
 
     artifacts_uri=mlflow.get_artifact_uri()

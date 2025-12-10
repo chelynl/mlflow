@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/8902d186382e49d9bccc88627e72ad91/artifacts
+end_time: 1764127112788
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 8902d186382e49d9bccc88627e72ad91
+run_name: painted-ray-830
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764127112303
+status: 3
+tags: []
+user_id: chelynlee

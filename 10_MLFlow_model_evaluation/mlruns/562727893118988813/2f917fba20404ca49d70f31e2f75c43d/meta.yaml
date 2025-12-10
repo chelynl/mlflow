@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/2f917fba20404ca49d70f31e2f75c43d/artifacts
+end_time: 1764125804434
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 2f917fba20404ca49d70f31e2f75c43d
+run_name: dazzling-fly-791
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125803926
+status: 3
+tags: []
+user_id: chelynlee

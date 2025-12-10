@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/912192418311653339/6681d473a1764e4aa5c8c85b4a437a8b/artifacts
+end_time: 1764118981033
+entry_point_name: ''
+experiment_id: '912192418311653339'
+lifecycle_stage: active
+run_id: 6681d473a1764e4aa5c8c85b4a437a8b
+run_name: clean-hare-66
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764118980671
+status: 3
+tags: []
+user_id: chelynlee

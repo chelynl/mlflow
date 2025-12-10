@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/13f53437472640fe87f612c8a308d184/artifacts
+end_time: 1764125342692
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 13f53437472640fe87f612c8a308d184
+run_name: vaunted-midge-999
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125342213
+status: 3
+tags: []
+user_id: chelynlee

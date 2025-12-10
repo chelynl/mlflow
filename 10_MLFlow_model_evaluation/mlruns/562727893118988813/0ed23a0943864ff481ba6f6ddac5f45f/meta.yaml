@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/0ed23a0943864ff481ba6f6ddac5f45f/artifacts
+end_time: 1764125181978
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 0ed23a0943864ff481ba6f6ddac5f45f
+run_name: fun-wasp-268
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125181613
+status: 3
+tags: []
+user_id: chelynlee

@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/cb0a11b2ada547ef8d46ebf13b0bb292/artifacts
+end_time: 1764127157955
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: cb0a11b2ada547ef8d46ebf13b0bb292
+run_name: adaptable-vole-163
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764127157441
+status: 3
+tags: []
+user_id: chelynlee

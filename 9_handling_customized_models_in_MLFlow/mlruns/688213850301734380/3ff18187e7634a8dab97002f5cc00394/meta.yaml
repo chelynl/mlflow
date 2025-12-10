@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/3ff18187e7634a8dab97002f5cc00394/artifacts
+end_time: 1764122108938
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: 3ff18187e7634a8dab97002f5cc00394
+run_name: amazing-cub-812
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122107759
+status: 3
+tags: []
+user_id: chelynlee

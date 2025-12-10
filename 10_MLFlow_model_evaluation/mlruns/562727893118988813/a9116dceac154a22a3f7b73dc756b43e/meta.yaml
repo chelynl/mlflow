@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/a9116dceac154a22a3f7b73dc756b43e/artifacts
+end_time: 1764125953639
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: a9116dceac154a22a3f7b73dc756b43e
+run_name: welcoming-ram-590
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125953072
+status: 3
+tags: []
+user_id: chelynlee

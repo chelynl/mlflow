@@ -24,6 +24,9 @@ from mlflow.models import MetricThreshold
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
+# Set working directory where data is stored
+os.chdir("/Users/chelynlee/projects/MLFlow_Udemy")
+
 # get arguments from command
 parser = argparse.ArgumentParser()
 parser.add_argument("--alpha", type=float, required=False, default=0.4)
@@ -67,7 +70,8 @@ if __name__ == "__main__":
     alpha = args.alpha
     l1_ratio = args.l1_ratio
 
-    mlflow.set_tracking_uri(uri="")
+    mlflow.set_tracking_uri(uri="/Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns")
+
 
     print("The set tracking uri is ", mlflow.get_tracking_uri())
     exp = mlflow.set_experiment(experiment_name="experiment_model_evaluation")
@@ -177,7 +181,7 @@ if __name__ == "__main__":
         artifact_path="sklear_mlflow_pyfunc",
         python_model=SklearnWrapper("sklearn_model"),
         artifacts=artifacts,
-        code_path=["main.py"],
+        code_paths=["10_MLFlow_model_evaluation/model+customization.py"],
         conda_env=conda_env
    )
 
@@ -185,7 +189,7 @@ if __name__ == "__main__":
         artifact_path="baseline_sklearn_mlflow_pyfunc",
         python_model=SklearnWrapper("baseline_sklearn_model"),
         artifacts=baseline_artifacts,
-        code_path=["main.py"],
+        code_paths=["10_MLFlow_model_evaluation/model+customization.py"],
         conda_env=conda_env
     )
 
@@ -198,13 +202,13 @@ if __name__ == "__main__":
     squared_diff_plus_one_metric = make_metric(
         eval_fn=squared_diff_plus_one,
         greater_is_better=False,
-        name="squared diff plus one"
+        name="squared_diff_plus_one"
     )
 
     sum_on_target_divided_by_two_metric = make_metric(
         eval_fn=sum_on_target_divided_by_two,
         greater_is_better=True,
-        name="sum on target divided by two"
+        name="sum_on_target_divided_by_two"
     )
 
 
@@ -218,6 +222,7 @@ if __name__ == "__main__":
         return {"example_scatter_plot_artifact": plot_path}
 
     artifacts_uri = mlflow.get_artifact_uri("sklear_mlflow_pyfunc")
+
 
     thresholds = {
         "mean_squared_error": MetricThreshold(
@@ -234,7 +239,7 @@ if __name__ == "__main__":
         targets="quality",
         model_type="regressor",
         evaluators=["default"],
-        custom_metrics=[
+        extra_metrics=[
             squared_diff_plus_one_metric,
             sum_on_target_divided_by_two_metric
         ],
@@ -243,7 +248,7 @@ if __name__ == "__main__":
         baseline_model=baseline_model_uri
     )
 
-    print("The artifact path is",artifacts_uri )
+    print("The artifact path is", model_uri)
     mlflow.end_run()
     run = mlflow.last_active_run()
     print("Active run id is {}".format(run.info.run_id))

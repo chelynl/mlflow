@@ -1,0 +1,82 @@
+name: house_price_pred
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core
+  - python=3.10
+  - pip
+  - numpy<2
+  - pandas
+  - scikit-learn
+  - scipy
+  - matplotlib
+  - pyarrow>=14,<16
+  - xgboost=1.7.6
+  - mlflow               # you can pin a version if you want, e.g. mlflow=2.17.0
+  - boto3
+
+  # Misc runtime / build tools (fine to keep)
+  - ca-certificates
+  - libffi
+  - llvm-openmp
+  - openssl
+  - sqlite
+  - wheel
+  - setuptools
+  - cmake>=3.25
+  - tzdata
+
+  # Only things that *need* pip go here
+  - pip:
+      - alembic
+      - blinker
+      - certifi
+      - charset-normalizer
+      - click
+      - cloudpickle
+      - colorama
+      - contourpy
+      - cycler
+      - databricks-cli
+      - docker
+      - entrypoints
+      - flask
+      - fonttools
+      - gitdb
+      - gitpython
+      - greenlet
+      - idna
+      - importlib-metadata
+      - importlib-resources
+      - itsdangerous
+      - jinja2
+      - joblib
+      - kiwisolver
+      - mako
+      - markdown
+      - markupsafe
+      - oauthlib
+      - packaging
+      - pillow
+      - protobuf
+      - pyjwt
+      - pyparsing
+      - python-dateutil
+      - pytz
+      - pyyaml
+      - querystring-parser
+      - requests
+      - six
+      - smmap
+      - sqlalchemy
+      - sqlparse
+      - tabulate
+      - threadpoolctl
+      - typing-extensions
+      - urllib3
+      - waitress
+      - websocket-client
+      - werkzeug
+      - zipp

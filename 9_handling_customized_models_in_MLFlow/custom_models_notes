@@ -1,7 +1,20 @@
 What if you want to use a ML library that is not supported by MLFlow's built-in flavors?
-Built-in utilities are not sufficient to package custom inference code into a MLflow model
+Built-in utilities are not sufficient to package custom inference code into a MLflow model.
+Use the save_model or log_model function from the mlflow.pyfunc module to package custom inference code into a MLflow model.
+Once you have created a custom python model using mlflow.pyfunc library, it is packaged with the python function flavor (built-in flavor provided by MLFlow).
+Thus, this allows the model to be deployed to various production environments that are supported by MLflow such as Sagemaker, Azure ML, or local REST endpoints.
+
+Only the model saving or logging part will be different. The inference code will be the same.
 
 Custom python models in MLflow empower data scientists to incorporate their own algorithms, custom logic, and external libraries seamlessly into the model building process. 
 You can then integrate your custom model with MLflow, allowing you to package and use it as an MLflow model only. This way, you can leverage MLflow tracking and deployment capabilities even with models from unsupported libraries.
 
 Custom flavors allows for the creation of custom serialization and deserialization logic for model packaging and deployment.
+- creating custom serialization and deserialization logic for a specific model type
+- defining your own ways to save, log, and load the model to do prediction or any other functionalities
+
+Method for creating custom flavors:
+1. Serialization and deserialization logic: convert the model to a serialized format and vice versa.
+2. Create flavor directory structure: create a directory structure containing the necessary files and metadata required for serialization, deserialization, and serving of the model.
+3. Register the custom flavor: register the custom flavor by creating a subdirectory within the mlflow/models/ directory and placing the flavor files in that subdirectory.
+4. Define flavor-specific tools and functions (optional): define additional tools or functions specific to custom flavor. For example, custom loading or serving logic, additional metadata, or utility functions for working with the flavor.

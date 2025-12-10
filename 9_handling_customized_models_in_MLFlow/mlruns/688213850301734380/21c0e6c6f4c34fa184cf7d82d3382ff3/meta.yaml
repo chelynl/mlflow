@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/21c0e6c6f4c34fa184cf7d82d3382ff3/artifacts
+end_time: 1764122158350
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: 21c0e6c6f4c34fa184cf7d82d3382ff3
+run_name: dapper-fox-678
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122157956
+status: 3
+tags: []
+user_id: chelynlee

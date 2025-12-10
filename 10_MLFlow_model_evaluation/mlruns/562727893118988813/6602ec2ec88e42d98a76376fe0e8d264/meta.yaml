@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/6602ec2ec88e42d98a76376fe0e8d264/artifacts
+end_time: 1764124712202
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: 6602ec2ec88e42d98a76376fe0e8d264
+run_name: salty-quail-936
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764124711513
+status: 3
+tags: []
+user_id: chelynlee

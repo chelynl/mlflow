@@ -1,18 +1,57 @@
+Commands to run on EC2 instance terminal:
+
+# Update the package list and upgrade the packages on EC2 instance
 sudo apt update
 
+# Install Python 3 pip
 sudo apt install python3-pip
 
+# Use installed pip to install pipenv and virtualenv
 sudo pip3 install pipenv virtualenv
+# Try this if above doesn't work
+sudo apt install pipenv virtualenv
 
+# create mlflow directory and cd into it
 mkdir mlflow
 
 cd mlflow
 
+# use pipenv to install mlflow, awscli, boto3, and setuptools
 pipenv install mlflow awscli boto3 setuptools
 
+# activate the shell (virtual environment) created by pipenv
 pipenv shell
 
+# configure AWS CLI on EC2 instance (provide credentials to access S3 bucket and other AWS services)
 aws configure
 
-mlflow server -h 0.0.0.0 --backend-store-uri sqlite:///mlflow.db --default-artifact-root s3://mlflow-artifacts
+# start MLflow server (provide host to all using 0.0.0.0 to allow access from any IP address)
+# add backend store uri to sqlite database and default artifact root to S3 bucket that we created
+mlflow server -h 0.0.0.0 --backend-store-uri sqlite:///mlflow.db --default-artifact-root s3://clee-mlflow-project-artifacts
 
+In order for us to access the server, we need to open traffic on port 5000 where this service is running.
+Once you update the security group settings, you should be able to access the server at http://<EC2_PUBLIC_DNS>:5000
+Public DNS: ec2-3-19-234-164.us-east-2.compute.amazonaws.com
+
+If mlflow blocks the request whose Host header isn't in its allow-list, try running this:
+
+See if port 5000 is open: 
+sudo lsof -i:5000
+
+Kill process on port 5000: 
+sudo kill -9 <PID>
+
+From inside pipenv shell, open MLflow to any host/origin so you can get unblocked:
+export MLFLOW_SERVER_ALLOWED_HOSTS="*"
+export MLFLOW_SERVER_CORS_ALLOWED_ORIGINS="*"
+
+Then run MLflow server:
+mlflow server \
+  --host 0.0.0.0 \
+  --port 5000 \
+  --backend-store-uri sqlite:///mlflow.db \
+  --default-artifact-root s3://clee-mlflow-project-artifacts
+
+Access the mlflow tracking server at http://ec2-3-19-234-164.us-east-2.compute.amazonaws.com:5000
+
+ec2-3-19-66-196.us-east-2.compute.amazonaws.com:5000

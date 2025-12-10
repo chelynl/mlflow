@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/9_handling_customized_models_in_MLFlow/mlruns/688213850301734380/27a5f44a5a944b7e98d310892235d8a3/artifacts
+end_time: 1764122724968
+entry_point_name: ''
+experiment_id: '688213850301734380'
+lifecycle_stage: active
+run_id: 27a5f44a5a944b7e98d310892235d8a3
+run_name: debonair-gnu-178
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764122724508
+status: 3
+tags: []
+user_id: chelynlee

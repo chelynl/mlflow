@@ -1,0 +1,14 @@
+artifact_uri: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/562727893118988813/ea5f48491e6744faaf041852f58b5433/artifacts
+end_time: 1764125923499
+entry_point_name: ''
+experiment_id: '562727893118988813'
+lifecycle_stage: active
+run_id: ea5f48491e6744faaf041852f58b5433
+run_name: welcoming-wasp-982
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764125922995
+status: 3
+tags: []
+user_id: chelynlee

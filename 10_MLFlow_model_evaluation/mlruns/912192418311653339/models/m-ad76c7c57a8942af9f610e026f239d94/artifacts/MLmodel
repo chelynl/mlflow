@@ -1,0 +1,26 @@
+artifact_path: /Users/chelynlee/projects/MLFlow_Udemy/10_MLFlow_model_evaluation/mlruns/912192418311653339/models/m-ad76c7c57a8942af9f610e026f239d94/artifacts
+flavors:
+  python_function:
+    artifacts:
+      data:
+        path: artifacts/red-wine-data
+        uri: red-wine-data
+      sklearn_model:
+        path: artifacts/sklearn_model.pkl
+        uri: sklearn_model.pkl
+    cloudpickle_version: 3.0.0
+    code: code
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.12.7
+    streamable: false
+mlflow_version: 3.3.2
+model_id: m-ad76c7c57a8942af9f610e026f239d94
+model_size_bytes: 215828
+model_uuid: m-ad76c7c57a8942af9f610e026f239d94
+prompts: null
+run_id: f6f9484c20664caab53ad963dd2771f5
+utc_time_created: '2025-11-26 02:34:30.693866'
